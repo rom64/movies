@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
+import {API_KEY, API_URL} from '../config';
 
 import MovieList from "./MovieList";
 import Preloader from "./Preloader";
 import Search from "./Search";
-import {API_KEY, API_URL} from '../config';
+import ArrowToTop from "./ArrowToTop";
+
 
 
 const Main = () =>{
@@ -12,6 +14,23 @@ const Main = () =>{
     const [ page, setPage ] = useState(1 );
     const [ disabled, setDisabled ] = useState( false );
     const [ count, setCount ] = useState(0 );
+    const [ visible, setVisible ] = useState( false );
+
+    const handleScroll = () =>{
+        if( window.pageYOffset > 900 ){
+            setVisible( true );
+        }else{
+            setVisible( false );
+        }
+    }
+
+    useEffect(() => {
+        window.addEventListener("scroll", handleScroll);
+
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    },[window.pageYOffset] );
 
     useEffect(()=>{
         fetch(`http://www.omdbapi.com/?apikey=${API_KEY}&s=terminator` )
@@ -75,6 +94,7 @@ const Main = () =>{
                     movies={ movies }
                 />
                 : <Preloader/>}
+            { visible && <ArrowToTop/> }
 
         </main>
     )

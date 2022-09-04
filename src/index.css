@@ -13,7 +13,7 @@ code {
 }
 
 .content{
-  min-height: calc(100vh - 134px);
+  min-height: calc(100vh - 128px);
 }
 .movies{
   display: grid;
@@ -40,4 +40,20 @@ code {
 }
 .marginRight{
   margin-right: 2rem;
+}
+.green{
+  padding-top: 0;
+}
+
+.top{
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  bottom: 8%;
+  right: 5%;
+  cursor: pointer;
+  z-index: 2;
+}
+.top img{
+  width: 100%;
 }
