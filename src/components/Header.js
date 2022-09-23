@@ -1,4 +1,4 @@
-
+import git from '../GitHub-Logo.png';
 
 const Header = () =>{
     return(
@@ -6,7 +6,11 @@ const Header = () =>{
             <div className="nav-wrapper container">
                 <a href="/" className="brand-logo">Movies Search</a>
                 <ul id="nav-mobile" className="right hide-on-med-and-down">
-                    <li><a href="https://github.com/rom64">Github</a></li>
+                    <li>
+                        <a href="https://github.com/rom64">
+                            <img className="header-img" src={ git } alt="github"/>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </nav>
