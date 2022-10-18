@@ -63,6 +63,23 @@ code {
 .top img{
   width: 100%;
 }
+.single-card{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+.single-card-content{
+  font-weight: bold;
+  font-size: 2rem;
+  padding-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.card-image {
+  text-align: center;
+}
 @media (max-width: 576px  ){
   .radio{
     display:flex;

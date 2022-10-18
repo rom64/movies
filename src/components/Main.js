@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import {API_KEY, API_URL} from '../config';
 
 import MovieList from "./MovieList";
 import Preloader from "./Preloader";
 import Search from "./Search";
 import ArrowToTop from "./ArrowToTop";
+import SingleMovie from "./SingleMovie";
 
 
 
@@ -15,6 +17,7 @@ const Main = () =>{
     const [ disabled, setDisabled ] = useState( false );
     const [ count, setCount ] = useState(0 );
     const [ visible, setVisible ] = useState( false );
+
 
     const handleScroll = () =>{
         if( window.pageYOffset > 900 ){
@@ -82,7 +85,8 @@ const Main = () =>{
     }
     return(
         <main className="content container">
-            <Search
+
+             <Search
                 onSearch={ searchMovies }
                 loadMore={ loadMore }
                 disabled={ disabled }
@@ -90,9 +94,13 @@ const Main = () =>{
                 movies={ movies }
             />
             { !loading ?
-                <MovieList
-                    movies={ movies }
-                />
+                <Router>
+                    <Routes>
+                        <Route path="/" element={<MovieList movies={ movies }/>}/>
+                        <Route path="/:title" element={<SingleMovie movies={ movies } />}/>
+                    </Routes>
+                </Router>
+
                 : <Preloader/>}
             { visible && <ArrowToTop/> }
 

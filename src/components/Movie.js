@@ -1,3 +1,5 @@
+
+
 const Movie = ({ imdbID: id, Title: title, Year: year, Poster: poster, Type: type }) =>{
     return(
         <div className="card">
