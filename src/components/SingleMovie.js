@@ -1,11 +1,22 @@
+import { useEffect, useContext } from 'react';
 import { useParams, useNavigate } from "react-router-dom";
+
+import { MainContext } from "../context";
 
 const SingleMovie = ({ movies=[] }) =>{
     const params = useParams();
     const movie = movies.find( movie => movie.Title === params.title ) || [];
     const navigate = useNavigate();
 
+    const { setSearch } = useContext( MainContext );
+
     const { Title: title, Year: year, Poster: poster } = movie;
+    useEffect(()=>{
+        setSearch();
+        return ()=>{
+            setSearch();
+        }
+    }, [])
     return(
 
         <div className="single-card">
@@ -22,7 +33,9 @@ const SingleMovie = ({ movies=[] }) =>{
 
                 <button
                     className="btn"
-                    onClick={()=>navigate(-1)}
+                    onClick={()=>{
+                        navigate(-1);
+                    }}
                 >
                     Go Back
                 </button>

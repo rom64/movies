@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import StatusBar from "./StatusBar";
 
-const Search = ({ onSearch, loadMore, disabled, count, movies }) =>{
+const Search = ({ onSearch, loadMore, disabled, count, movies =[] }) =>{
     const [ search, setSearch ] = useState('');
     const [ type, setType ] = useState('all');
     const [ loaded, setLoaded ] = useState( false );

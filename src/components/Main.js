@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import {API_KEY, API_URL} from '../config';
 
@@ -7,6 +7,8 @@ import Preloader from "./Preloader";
 import Search from "./Search";
 import ArrowToTop from "./ArrowToTop";
 import SingleMovie from "./SingleMovie";
+
+import { MainContext } from "../context";
 
 
 
@@ -17,6 +19,8 @@ const Main = () =>{
     const [ disabled, setDisabled ] = useState( false );
     const [ count, setCount ] = useState(0 );
     const [ visible, setVisible ] = useState( false );
+
+    const { setSearch, searchBlock } = useContext( MainContext );
 
 
     const handleScroll = () =>{
@@ -85,19 +89,19 @@ const Main = () =>{
     }
     return(
         <main className="content container">
-
-             <Search
+            { searchBlock && <Search
                 onSearch={ searchMovies }
                 loadMore={ loadMore }
                 disabled={ disabled }
                 count={ count }
                 movies={ movies }
-            />
+            />}
+
             { !loading ?
                 <Router>
                     <Routes>
                         <Route path="/" element={<MovieList movies={ movies }/>}/>
-                        <Route path="/:title" element={<SingleMovie movies={ movies } />}/>
+                        <Route path="/:title" element={<SingleMovie movies={ movies }  />} />
                     </Routes>
                 </Router>
 
