@@ -7,6 +7,7 @@ import Preloader from "./Preloader";
 import Search from "./Search";
 import ArrowToTop from "./ArrowToTop";
 import SingleMovie from "./SingleMovie";
+import ErrorBoundary from "./ErrorBoundary";
 
 import { MainContext } from "../context";
 
@@ -100,7 +101,9 @@ const Main = () =>{
             { !loading ?
                 <Router>
                     <Routes>
-                        <Route path="/" element={<MovieList movies={ movies }/>}/>
+                        <Route path="/" element={<ErrorBoundary>
+                            <MovieList movies={ movies }/>
+                        </ErrorBoundary>}/>
                         <Route path="/:title" element={<SingleMovie movies={ movies }  />} />
                     </Routes>
                 </Router>
