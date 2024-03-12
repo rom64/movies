@@ -2,7 +2,8 @@ import { Link } from "react-router-dom";
 
 import Movie from "./Movie";
 
-const MovieList = ({ movies }) =>{
+const MovieList = ({ movies = [] }) =>{
+    console.log(movies)
     return(
         <>
             <div className="movies">

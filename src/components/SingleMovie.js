@@ -2,6 +2,7 @@ import { useEffect, useContext } from 'react';
 import { useParams, useNavigate } from "react-router-dom";
 
 import { MainContext } from "../context";
+import StarRating from './StarRating';
 
 const SingleMovie = ({ movies=[] }) =>{
     const params = useParams();
@@ -30,7 +31,7 @@ const SingleMovie = ({ movies=[] }) =>{
                     <span className="card-title activator grey-text text-darken-4">{ title }</span>
                     <p>{ year } </p>
                 </div>
-
+                <StarRating />
                 <button
                     className="btn"
                     onClick={()=>{

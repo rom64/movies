@@ -71,13 +71,13 @@ const Search = ({ onSearch, loadMore, disabled, count, movies =[] }) =>{
                         <span>Series Only</span>
                     </label>
                 </div>
-                <button
+                {movies && count > 10 && <button
                     className="btn waves-effect waves-light more"
                     onClick={ ()=>{loadMore(search, type)} }
                     disabled={disabled}
                 >
                     Load more
-                </button>
+                </button>}
             </div>
             { loaded && <StatusBar count={count} movies={movies}/>}
         </div>
