@@ -12,6 +12,7 @@ const SingleMovie = ({ movies=[] }) =>{
     const { setSearch } = useContext( MainContext );
 
     const { Title: title, Year: year, Poster: poster } = movie;
+
     useEffect(()=>{
         setSearch();
         return ()=>{
@@ -31,7 +32,7 @@ const SingleMovie = ({ movies=[] }) =>{
                     <span className="card-title activator grey-text text-darken-4">{ title }</span>
                     <p>{ year } </p>
                 </div>
-                <StarRating />
+                <StarRating title={title}/>
                 <button
                     className="btn"
                     onClick={()=>{

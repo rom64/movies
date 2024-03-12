@@ -25,7 +25,7 @@ const Main = () =>{
 
 
     const handleScroll = () =>{
-        if( window.pageYOffset > 900 ){
+        if( window.scrollY > 900 ){
             setVisible( true );
         }else{
             setVisible( false );
